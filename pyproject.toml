@@ -1,0 +1,35 @@
+[project]
+name = "investright"
+version = "1.0.0"
+description = "A transparent, formula-driven scorecard workbench for NSE/BSE listed companies."
+readme = "README.md"
+requires-python = ">=3.10"
+
+dependencies = [
+    # 1.62 is the floor because the layout uses width="stretch", which
+    # replaced the deprecated use_container_width argument.
+    "streamlit>=1.62",
+    "pandas>=2.0",
+    # Prices only. Its Indian fundamentals are unreliable and are never
+    # scored without you confirming them.
+    "yfinance>=0.2.40",
+    # Reads the Screener.in "Export to Excel" data sheet.
+    "openpyxl>=3.1",
+]
+
+[project.optional-dependencies]
+# Zerodha Kite Connect: a paid subscription, with a token that expires every
+# morning. Install with:  uv sync --extra kite
+kite = ["kiteconnect>=4.2"]
+
+[dependency-groups]
+dev = ["pytest>=7.4"]
+
+[tool.uv]
+# An application, not a library: there is nothing to build or install, and
+# `investright` is imported from the repository root.
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
