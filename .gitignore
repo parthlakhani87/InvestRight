@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# Local database, rubric overrides and exports — personal data, never committed.
+data/
+*.sqlite3
+*.db
+
+.pytest_cache/
+.streamlit/secrets.toml
+.DS_Store
